@@ -7,13 +7,12 @@
         * {
             padding: 0;
             margin: 0;
-            border: 0;
             list-style: none;
         }
 
         .box {
             width: 1000px;
-            margin: 50px auto;
+            margin: 30px auto;
         }
 
         .box .title {
@@ -22,7 +21,6 @@
             position: relative;
             top: 3px;
             background: #fff;
-            border-bottom: none;
         }
 
         .box .content {
@@ -30,16 +28,18 @@
             height: 475px;
 
         }
-        .box .content img{
+
+        .box .content img {
             width: 400px;
         }
+
         .box ul {
-            overflow: hidden;
+            display: flex;
         }
 
         .box ul li {
-            float: left;
-            padding: 10px;
+            flex: 1;
+            text-align: center;
         }
 
         .box ul .cur {
@@ -49,19 +49,19 @@
     </style>
 
 </head>
-<body >
+<body>
 
 <div class="box">
     <div class="title">
         <ul>
-            <li ng-class="{cur:course == '水门'}" ng-mouseover="move('水门')">水门</li>
-            <li ng-class="{cur:course == '自来也'}" ng-mouseover="move('自来也')">自来也</li>
-            <li ng-class="{cur:course == '卡卡西'}" ng-mouseover="move('卡卡西')">卡卡西</li>
-            <li ng-class="{cur:course == '鸣人'}" ng-mouseover="move('鸣人')">鸣人</li>
+            <li ng-class="{cur:person == '水门'}" ng-mouseover="move('水门')">水门</li>
+            <li ng-class="{cur:person == '自来也'}" ng-mouseover="move('自来也')">自来也</li>
+            <li ng-class="{cur:person == '卡卡西'}" ng-mouseover="move('卡卡西')">卡卡西</li>
+            <li ng-class="{cur:person == '鸣人'}" ng-mouseover="move('鸣人')">鸣人</li>
         </ul>
     </div>
 
-    <div class="content" ng-switch="course">
+    <div class="content" ng-switch="person">
         <div ng-switch-default><img src="image/01.jpg" alt=""></div>
         <div ng-switch-when="自来也"><img src="image/02.jpg" alt=""></div>
         <div ng-switch-when="卡卡西"><img src="image/03.jpg" alt=""></div>
@@ -69,26 +69,19 @@
     </div>
 
 </div>
-
 <script src="js/angular.js"></script>
 <script>
     // 创建模块
-    var app = angular.module('app',[]);
-
+    var app = angular.module('app', []);
     // 创建控制器
-    app.controller('myController',['$scope',function ($scope) {
+    app.controller('myController', ['$scope', function ($scope) {
         $scope.title = 'tab';
-
-        $scope.course = '水门';
-
+        $scope.person = '水门';
         // 绑定事件
         $scope.move = function (regs) {
-            $scope.course = regs;
+            $scope.person = regs;
         }
     }]);
-
-
-
 </script>
 </body>
 
